@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – Yadgar Shop</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1a6b3c;
+      --primary-light: #28a745;
+      --accent: #f5a623;
+      --dark: #0f1c14;
+      --light-bg: #f4f9f6;
+      --card-shadow: 0 8px 30px rgba(0,0,0,0.09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--light-bg);
+      color: #222;
+    }
+
+    h1,h2,h3,h4,h5,.navbar-brand {
+      font-family: 'Baloo 2', cursive;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: var(--dark) !important;
+      padding: 14px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      position: sticky; top: 0; z-index: 999;
+    }
+    .navbar-brand { font-size: 1.6rem; font-weight: 800; color: #fff !important; }
+    .navbar-brand span { color: var(--accent); }
+    .nav-link { color: #ccc !important; font-weight: 600; font-size: 1rem; margin-left: 8px; transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: var(--accent) !important; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: linear-gradient(135deg, #0f2d1c 0%, #1a6b3c 60%, #28a745 100%);
+      color: #fff;
+      padding: 80px 20px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      top: -120px; right: -80px;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      position: relative; z-index: 1;
+    }
+    .page-header p { font-size: 1.1rem; opacity: 0.85; position: relative; z-index: 1; }
+    .breadcrumb-nav { font-size: 0.9rem; opacity: 0.7; position: relative; z-index: 1; }
+    .breadcrumb-nav a { color: var(--accent); text-decoration: none; }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 1.9rem; font-weight: 800;
+      color: var(--dark);
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      height: 4px; width: 55%;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 6px 0 0;
+    }
+
+    /* ── CONTACT INFO CARDS ── */
+    .info-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+      border-bottom: 4px solid transparent;
+      height: 100%;
+    }
+    .info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      border-bottom-color: var(--primary-light);
+    }
+    .info-icon {
+      width: 65px; height: 65px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.6rem;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(26,107,60,0.25);
+    }
+    .info-card h5 { font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+    .info-card p { font-size: 0.92rem; color: #555; margin: 0; line-height: 1.6; }
+    .info-card a { color: var(--primary-light); text-decoration: none; font-weight: 700; }
+    .info-card a:hover { color: var(--primary); }
+
+    /* ── FORM ── */
+    .form-section { background: #fff; }
+
+    .contact-form-box {
+      background: var(--light-bg);
+      border-radius: 24px;
+      padding: 40px 36px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .form-label {
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .form-control, .form-select {
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      font-family: 'Nunito', sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 4px rgba(40,167,69,0.12);
+      outline: none;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 14px 40px;
+      border-radius: 50px;
+      border: none;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(26,107,60,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(26,107,60,0.4);
+      color: #fff;
+    }
+
+    .success-msg {
+      display: none;
+      background: #d4edda;
+      border: 2px solid #28a745;
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: #155724;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    /* ── WHATSAPP SECTION ── */
+    .whatsapp-section {
+      background: linear-gradient(135deg, #075e54, #25D366);
+      color: #fff;
+      padding: 70px 20px;
+      text-align: center;
+    }
+    .whatsapp-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+    .whatsapp-section p { font-size: 1.05rem; opacity: 0.9; margin-bottom: 6px; }
+
+    .btn-whatsapp {
+      background: #fff;
+      color: #075e54;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 15px 42px;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      margin-top: 8px;
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      color: #075e54;
+    }
+
+    /* ── TIMING ── */
+    .timing-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+    }
+    .timing-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+    }
+    .timing-row:last-child { border-bottom: none; }
+    .timing-row .day { font-weight: 700; color: var(--dark); }
+    .timing-row .time { color: var(--primary-light); font-weight: 600; }
+    .timing-row .closed { color: #e74c3c; font-weight: 600; }
+    .badge-open {
+      background: #d4edda; color: #155724;
+      font-size: 0.75rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 20px;
+    }
+
+    /* ── MAP PLACEHOLDER ── */
+    .map-box {
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      border-radius: 18px;
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1rem;
+      font-weight: 700;
+      gap: 10px;
+      box-shadow: var(--card-shadow);
+    }
+    .map-box i { font-size: 3rem; }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--light-bg); }
+
+    .accordion-button {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--dark);
+      background: #fff;
+    }
+    .accordion-button:not(.collapsed) {
+      color: var(--primary);
+      background: #f0faf4;
+      box-shadow: none;
+    }
+    .accordion-button::after {
+      filter: hue-rotate(100deg);
+    }
+    .accordion-item {
+      border: 2px solid #e8f0ec;
+      border-radius: 12px !important;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .accordion-body {
+      font-size: 0.93rem;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.88rem;
+    }
+    footer span { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.65s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.jpg" alt="Yadgar Shop" height="45">
+      Yadgar <span>School Uniform </span>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <p class="breadcrumb-nav"><a href="index.html">Home</a> &nbsp;›&nbsp; Contact Us</p>
+  <h1 class="fade-up">📞 Hamse Samparko Karo</h1>
+  <p class="fade-up delay-1">Koi bhi sawaal ho — hum hamesha available hain!</p>
+</div>
+
+<!-- CONTACT INFO CARDS -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-6 col-md-3">
+        <div class="info-card">
+          <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
+          <h5>Phone</h5>
+          <p><a href="tel:919687540877">919687540877</a><br>Call karo kabhi bhi</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="info-card">
+          <div class="info-icon"><i class="bi bi-whatsapp"></i></div>
+          <h5>WhatsApp</h5>
+          <p><a href="https://wa.me/919687540877">9687540877</a><br>Order karo aasani se</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="info-card">
+          <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <h5>Address</h5>
+          <p>Yadgar Schhol Uniform<br>Abuji Complex, Umru Chokdi, Sidhpur, Gujarat, India </p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="info-card">
+          <div class="info-icon"><i class="bi bi-clock-fill"></i></div>
+         <h5>Timing</h5>
+          <p>Mon–Sat: 10AM–7PM<br>Sunday: Close</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FORM + TIMING -->
+<section class="form-section py-5">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+
+      <!-- CONTACT FORM -->
+      <div class="col-lg-7">
+        <h2 class="section-title mb-4">✉️ Message Bhejo</h2>
+        <div class="contact-form-box">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Aapka Naam *</label>
+              <input type="text" class="form-control" id="name" placeholder="Jaise: Fatima, Rahul...">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone Number *</label>
+              <input type="tel" class="form-control" id="phone" placeholder="9876543210">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Kya Chahiye? (Category)</label>
+              <select class="form-select" id="category">
+                <option value="">-- Select karo --</option>
+                <option>🎒 School Bag</option>
+                <option>👕 Uniform</option>
+                <option>👟 Shoes & Socks</option>
+                <option>🍱 Lunch Box / Bottle</option>
+                <option>❓ Kuch Aur</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Aapka Message *</label>
+              <textarea class="form-control" id="message" rows="4"
+                placeholder="Apni zaroorat ya sawaal yahan likhein..."></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-submit" onclick="submitForm()">
+                <i class="bi bi-send-fill me-2"></i>Message Bhejo
+              </button>
+              <div class="success-msg" id="successMsg">
+                ✅ Shukriya! Aapka message pahunch gaya. Hum jald hi contact karenge.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIMING + MAP -->
+      <div class="col-lg-5">
+        <h2 class="section-title mb-4">🕐 Shop Timing</h2>
+        <div class="timing-card mb-4">
+          <div class="timing-row">
+            <span class="day">Monday</span>
+            <span class="time">10:00 AM – 7:00 PM</span>
+            <span class="badge-open">Open</span>
+          </div>
+          <div class="timing-row">
+            <span class="day">Tuesday</span>
+            <span class="time">10:00 AM – 7:00 PM</span>
+            <span class="badge-open">Open</span>
+          </div>
+          <div class="timing-row">
+            <span class="day">Wednesday</span>
+            <span class="time">10:00 AM – 7:00 PM</span>
+            <span class="badge-open">Open</span>
+          </div>
+          <div class="timing-row">
+            <span class="day">Thursday</span>
+            <span class="time">10:00 AM – 7:00 PM</span>
+            <span class="badge-open">Open</span>
+          </div>
+          <div class="timing-row">
+            <span class="day">Friday</span>
+            <span class="time">10:00 AM – 7:00 PM</span>
+            <span class="badge-open">Open</span>
+          </div>
+          <div class="timing-row">
+            <span class="day">Saturday</span>
+            <span class="time">10:00 AM – 7:00 PM</span>
+            <span class="badge-open">Open</span>
+          </div>
+          <div class="timing-row">
+            <span class="day">Sunday</span>
+            <span class="badge-open">Close</span>
+          </div>
+        </div>
+
+        <!-- MAP PLACEHOLDER -->
+        <div class="map-box">
+          <i class="bi bi-pin-map-fill"></i>
+          <span>📍 
+            <a href="https://maps.app.goo.gl/9KCetygi5mN2doSK7?g_st=aw" target="_blank">
+          Yadgar School Uniform,Sidhpur
+        </a>
+      </span>
+      <small style="font-weight: 400; color: #555;">
+      </small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP SECTION -->
+<section class="whatsapp-section">
+  <div class="container">
+    <h2>💬 WhatsApp pe Order Karo!</h2>
+    <p>Seedha message karo — koi form nahi, koi wait nahi</p>
+    <p style="opacity:0.75; font-size:0.95rem;">
+      Product ka naam likhkar bhejo, hum price aur availability batayenge ⚡
+    </p>
+    <a href="https://wa.me/919687540877 ?text=Assalamu%20Alaikum!%20Mujhe%20school%20items%20chahiye." class="btn-whatsapp">
+      <i class="bi bi-whatsapp" style="font-size:1.3rem;"></i>
+      WhatsApp par Message Karo
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">❓ Aksar Pooche Jaane Wale Sawaal</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Kya hum WhatsApp pe order kar sakte hain?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Bilkul! WhatsApp hamara sabse popular order method hai. 9687540877  pe message karo,
+                apne zaroorat ke items batao — hum price aur availability turant batayenge.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Kya home delivery milti hai?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Haan! all india ein hum delivery arrange kar sakte hain.
+                WhatsApp pe pehle contact karo, delivery ki details wahan bata denge.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Kya school uniform custom size mein milti hai?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Haan, alag alag sizes available hain. Apna size WhatsApp pe batao —
+                hum confirm karenge ki available hai ya nahi.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Shop band ho to kaise contact karein?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                WhatsApp pe message chhod do — hum shop khulne pe reply karenge.
+                hum jald respond karenge.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq5">
+                Kya bulk order milta hai schools ke liye?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Haan! Schools ya groups ke liye bulk orders available hain special price pe.
+                Directly WhatsApp ya phone pe baat karo details ke liye.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="mb-0">© 2025 <span>Yadgar School Uniform</span> Sidhpur, Gujarat &nbsp;|&nbsp; Designed with ❤️</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !phone || !message) {
+      alert('Please naam, phone aur message fill karo!');
+      return;
+    }
+
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('message').value = '';
+    document.getElementById('category').value = '';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – Yadgar Shop</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1a6b3c;
+      --primary-light: #28a745;
+      --accent: #f5a623;
+      --dark: #0f1c14;
+      --light-bg: #f4f9f6;
+      --card-shadow: 0 8px 30px rgba(0,0,0,0.09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--light-bg);
+      color: #222;
+    }
+
+    h1,h2,h3,h4,h5,.navbar-brand {
+      font-family: 'Baloo 2', cursive;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: var(--dark) !important;
+      padding: 14px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      position: sticky; top: 0; z-index: 999;
+    }
+    .navbar-brand {
+      font-size: 1.6rem; font-weight: 800; color: #fff !important;
+    }
+    .navbar-brand span { color: var(--accent); }
+    .nav-link { color: #ccc !important; font-weight: 600; font-size: 1rem; margin-left: 8px; transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: var(--accent) !important; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: linear-gradient(135deg, #0f2d1c 0%, #1a6b3c 60%, #28a745 100%);
+      color: #fff;
+      padding: 80px 20px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      top: -120px; right: -80px;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      position: relative; z-index: 1;
+    }
+    .page-header p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      position: relative; z-index: 1;
+    }
+    .breadcrumb-nav {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      position: relative; z-index: 1;
+    }
+    .breadcrumb-nav a { color: var(--accent); text-decoration: none; }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      height: 4px; width: 55%;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 6px 0 0;
+    }
+
+    /* ── STORY SECTION ── */
+    .story-section { background: #fff; }
+
+    .story-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #444;
+    }
+
+    .story-highlight {
+      background: var(--light-bg);
+      border-left: 5px solid var(--primary-light);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--dark);
+      margin: 24px 0;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      border-radius: 20px;
+      padding: 36px 30px;
+      height: 100%;
+    }
+    .info-box h4 { font-weight: 800; font-size: 1.3rem; margin-bottom: 20px; }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .info-item i { font-size: 1.3rem; margin-top: 2px; color: var(--accent); }
+    .info-item div { font-size: 0.95rem; line-height: 1.5; }
+    .info-item strong { display: block; font-size: 1rem; }
+
+    /* ── STATS ── */
+    .stats-section {
+      background: var(--dark);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .stat-item h3 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .stat-item p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin: 0;
+    }
+    .stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── VALUES ── */
+    .value-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 30px 22px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+      border-bottom: 4px solid transparent;
+      height: 100%;
+    }
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      border-bottom-color: var(--primary-light);
+    }
+    .value-icon {
+      width: 65px; height: 65px;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.7rem;
+    }
+    .value-card h5 {
+      font-weight: 800; font-size: 1.05rem;
+      color: var(--dark); margin-bottom: 8px;
+    }
+    .value-card p { font-size: 0.88rem; color: #666; margin: 0; }
+
+    /* ── PRODUCTS WE SELL ── */
+    .products-section { background: var(--light-bg); }
+
+    .product-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+      transition: all 0.2s;
+      margin: 6px;
+    }
+    .product-tag:hover {
+      background: var(--primary-light);
+      color: #fff;
+      border-color: var(--primary-light);
+    }
+
+    /* ── TEAM / OWNER ── */
+    .owner-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+    }
+    .owner-avatar {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2.8rem;
+      box-shadow: 0 6px 20px rgba(26,107,60,0.3);
+    }
+    .owner-card h4 { font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .owner-card .role { color: var(--primary-light); font-weight: 700; margin-bottom: 12px; }
+    .owner-card p { font-size: 0.93rem; color: #555; line-height: 1.7; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark), var(--primary));
+      color: #fff;
+      padding: 70px 20px;
+      text-align: center;
+    }
+    .cta-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
+    .cta-section p { font-size: 1.05rem; opacity: 0.85; }
+
+    .btn-whatsapp {
+      background: #25D366; color: #fff;
+      font-weight: 700; font-size: 1.05rem;
+      padding: 14px 38px;
+      border-radius: 50px; border: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.5);
+      color: #fff;
+    }
+
+    .btn-outline-light-custom {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: #fff; background: transparent;
+      padding: 13px 30px; border-radius: 50px;
+      font-weight: 700; font-size: 1rem;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline-light-custom:hover {
+      background: rgba(255,255,255,0.15); color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.88rem;
+    }
+    footer span { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.65s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.35s; }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.jpg" alt="Yadgar Shop" height="45">
+      Yadgar <span>School Uniform </span>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <p class="breadcrumb-nav"><a href="index.html">Home</a> &nbsp;›&nbsp; About Us</p>
+  <h1 class="fade-up">About Yadgar School Uniform</h1>
+  <p class="fade-up delay-1"> Trusted School Store — Students ke liye, Students ke saath</p>
+</div>
+
+<!-- OUR STORY -->
+<section class="story-section py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7 story-text">
+        <h2 class="section-title mb-4">📖 Hamari Kahani</h2>
+        <p>
+          <strong>Yadgar School Uniform</strong> ki shuruaat ek simple sapne se hui — ke har student ko school ki
+          har zaroorat ek hi jagah pe milni chahiye. Chahe wo uniform ho, bag ho, ya compass box —
+          sab kuch fresh, affordable aur quality ke saath.
+        </p>
+        <p>
+          Saalon se hum local parents aur students ki zarooratein samajh ke apna collection badhate rahe hain.
+          Hamare paas sirf products nahi, ek experience hai — jahan aap aate hain aur khali haath nahi jaate.
+        </p>
+        <div class="story-highlight">
+          "Yadgar Shop mein aane wala har customer hamare liye family jaisa hai.
+          Unka bharosa hi hamari sabse badi taakad hai."
+        </div>
+        <p>
+          Hum believe karte hain ki achi education ki shuruaat achi preparation se hoti hai —
+          aur achi preparation ki shuruaat sahi school items se hoti hai. Isliye hum hamesha
+          best quality products offer karte hain, best prices pe.
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <div class="info-box">
+          <h4><i class="bi bi-info-circle me-2"></i>Shop Ki Jaankari</h4>
+          <div class="info-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <div><strong>Location</strong>Abuji Complex, Umru Chokdi, Sidhpur, Gujarat, India</div>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-clock-fill"></i>
+            <div><strong>Timing</strong>Monday – Saturday: 10:00 AM – 7:00 PM<br>Sunday: Close </div>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-whatsapp"></i>
+            <div><strong>WhatsApp Order</strong>9687540877 par message karo, ghar pe milega!</div>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-calendar-check"></i>
+            <div><strong>Since</strong>Saalon se Aapki  ki seva mein</div>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-people-fill"></i>
+            <div><strong>Customers</strong>Hundreds of happy families & students</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <h3>500+</h3>
+          <p>Happy Customers</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <h3>100+</h3>
+          <p>Products Available</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <h3>10+</h3>
+          <p>Years of Service</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <h3>⭐ 5</h3>
+          <p>Customer Rating</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR VALUES -->
+<section class="py-5" style="background:#fff;">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">💡 Hamari Values</h2>
+      <p class="text-muted mt-3">Yeh cheezein hain jo hume alag banati hain</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="value-card">
+          <div class="value-icon">✔️</div>
+          <h5>Completeness</h5>
+          <p>School ki har zaroorat — ek hi jagah pe. Koi alag dukan dhundhne ki zaroorat nahi.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="value-card">
+          <div class="value-icon">💰</div>
+          <h5>Affordability</h5>
+          <p>Best quality pe best price. Har budget mein kuch na kuch milega zaroor.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h5>Trust</h5>
+          <p>Hum jo dikhate hain, wo hi dete hain. No fake products, no cheating.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="value-card">
+          <div class="value-icon">⚡</div>
+          <h5>Convenience</h5>
+          <p>WhatsApp pe order, ghar pe delivery — aapka time hai quymati.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS WE SELL -->
+<section class="products-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">🛒 Hamare Products</h2>
+      <p class="text-muted mt-3">School ki sab zarooraten ek hi jagah</p>
+    </div>
+    <div class="text-center">
+      <span class="product-tag">🎒 School Bags</span>
+      <span class="product-tag">👟 School Shoes</span>
+      <span class="product-tag">👕 Uniform</span>
+      <span class="product-tag">🧦 Socks</span>
+      <span class="product-tag">👔 Belt</span>
+      <span class="product-tag">📐 Compass Box</span>
+      <span class="product-tag">💧 Water Bottle</span>
+      <span class="product-tag">🍱 Lunch Box</span>
+      <span class="product-tag">🧕 School Hijab</span>
+      
+    </div>
+  </div>
+</section>
+
+<!-- OWNER / TEAM -->
+<section class="py-5" style="background:#fff;">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">👤 Shop Owner</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="owner-card">
+          <div class="owner-avatar">🧑‍💼</div>
+          <h4>Yadgar School Uniform Owner</h4>
+          <p class="role">Founder & Shop Keeper</p>
+          <p>
+            Hamare dukaan ke malik ne saalon ki mehnat se Yadgar Shop ko Sidhpur ka
+            ek jaana-maana school store banaya hai. Unka vision simple hai —
+            <strong>"Koi bhi student school jaaye bina proper items ke."</strong>
+          </p>
+          <a href="https://wa.me/919687540877" class="btn-whatsapp mt-3" style="justify-content:center;">
+            <i class="bi bi-whatsapp"></i> Directly Baat Karo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>🛍️ Aaj Hi Visit Karo!</h2>
+    <p>Ya ghar baithe WhatsApp pe order karo — hum deliver karenge</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap mt-4">
+      <a href="https://wa.me/919687540877" class="btn-whatsapp">
+        <i class="bi bi-whatsapp"></i> WhatsApp Order
+      </a>
+      <a href="contact.html" class="btn-outline-light-custom">
+        <i class="bi bi-envelope"></i> Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="mb-0">© 2025 <span>Yadgar School Uniform</span> — Sidhpur, Gujarat &nbsp;|&nbsp; Designed with ❤️</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

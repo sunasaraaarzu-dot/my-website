@@ -1,0 +1,46 @@
+.card img {
+  height: 180px;
+  object-fit: cover;
+}
+.card {
+  transition: 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+.product-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  height: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+}
+
+/* IMAGE FIX */
+.img-box {
+  width: 100%;
+  height: 180px;   /* 🔥 SAME HEIGHT FOR ALL */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+}
+
+.img-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;  /* 🔥 IMPORTANT */
+}
+
+/* TEXT */
+.card-body {
+  padding: 10px;
+}
